@@ -1,0 +1,21 @@
+{
+  "name": "access",
+  "version": "0.0.0",
+  "homepage": "https://github.com/wheresmypen/CMF_usher-v4",
+  "authors": [
+    "Daniel O'Brien <wheresmypen@yahoo.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5"
+  }
+}
