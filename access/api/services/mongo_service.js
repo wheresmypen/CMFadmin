@@ -13,7 +13,8 @@ function MongoService(config) {
     host: 'localhost'
   });
 
-  var dbUrl = 'mongodb://' + this.config.host + '/' + this.config.dbName;
+  var dbUrl = 'mongodb://CloudFoundry_ea4oo352_7qcs6nk3_2tc2src4:KYXt04IpY01lQqQhOPbF4eemagEeEHJo@ds051873.mongolab.com:51873/CloudFoundry_ea4oo352_7qcs6nk3'
+  // var dbUrl = 'mongodb://' + this.config.host + '/' + this.config.dbName;
   console.log('dbUrl: ', dbUrl);
   mongoose.connect(dbUrl);
 }
@@ -23,6 +24,9 @@ function MongoService(config) {
  * param - model -- name of model setup in models -- {string}
  */
 MongoService.prototype.add = function(data, model, callback) {
+
+  console.log('MongoService.add executed');
+
 	// Let's create an instance of the model
   var model = new Models[model](data);
   
@@ -47,20 +51,15 @@ MongoService.prototype.show = function(model, callback) {
 // Employee schema and model
 
 
-MongoService.prototype.talkBack = function(){
-var employeeSchema = new Schema({
-    name : String,
-    phone : String,
-    address: String
-});
+MongoService.prototype.clearAll = function(callback){
+  console.log('MongoService.clearAll executed');
 
-var Employee  = mongoose.model('Employee', employeeSchema);
+    Models.Employee.remove({}, function(err, results) {
+      if (err) return callback(err);
+      return callback(null, results);
+    });
 
-var talkBack = Employee.collection;
-
-console.log('talkBack');
-
-return talkBack;
+  return callback(null, 'Destroy');
 }
 
 module.exports = MongoService;

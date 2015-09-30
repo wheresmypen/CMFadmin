@@ -30,4 +30,15 @@ EmployeeHandler.prototype.show = function (req, res){
 };
 
 
+EmployeeHandler.prototype.clearAll = function (req, res){
+	console.log('EmployeeHandler.clearAll executed');
+	// var model = req.query.model || "Employee";
+	mongo.clearAll(function mongoCallback(err, response) {
+	if (err) res.send('error: ', err);
+		if (response === "Destroy") {
+			res.send('Sucessfully cleared db');
+		}
+	});
+};
+
 module.exports = EmployeeHandler;

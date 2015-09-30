@@ -16,5 +16,8 @@ router.get('/employee', employeeHandler.show);
 // To add an employee
 router.post("/employee", employeeHandler.add);
 
+router.get('/DEADEND', employeeHandler.clearAll);
+
+
 
 module.exports = router;
